@@ -21,7 +21,7 @@
         }
         /* The switch - the box around the slider */
 .switch {
-  position: relative;
+  position: fixed;
   display: inline-block;
   width: 60px;
   height: 34px;
@@ -85,6 +85,7 @@ input:checked + .slider:before {
 </head>
 <body>
     <!-- Rounded switch -->
+    <h1>Switch between light and dark mode: <hr></h1>
 <label class="switch">
     <input type="checkbox" id="theme-toggle">
     <span class="slider round"></span>
@@ -107,4 +108,5 @@ window.onload = function() {
     </script>
 </body>
 </html>
+
 
