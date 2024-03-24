@@ -87,7 +87,7 @@
 
     </head>
 
-    <body>
+   <body>
 
         <div class="protected">
             <div class="protected__alert" data-id="alert">You entered the wrong password</div>
@@ -114,6 +114,8 @@
 
                 request.onload = function () {
                     if (request.status >= 200 && request.status < 400) {
+                        // Set a cookie called 'loggedin' when the correct password is entered
+                        document.cookie = "loggedin=true; path=/";
                         window.location = url
                     } else {
                         parent.location.hash = hash
@@ -132,6 +134,18 @@
             }
 
             button[0].addEventListener("click", function () {
+                // Check if the user has reached the limit of login attempts
+                var attempts = parseInt(getCookie('attempts')) || 0;
+                if(attempts >= 10) {
+                    var lastAttempt = parseInt(getCookie('lastAttempt')) || 0;
+                    var timeLeft = Math.max(0, Math.ceil(3 * 60 - (Date.now() - lastAttempt) / 1000));
+                    if(timeLeft > 0) {
+                        alert('You have reached the limit of login attempts. Please wait ' + timeLeft + ' seconds.');
+                        return;
+                    }
+                }
+                setCookie('attempts', attempts + 1);
+                setCookie('lastAttempt', Date.now());
                 login(password[0].value)
             })
 
@@ -140,6 +154,21 @@
                 if (e.keyCode == 13) {
                     login(password[0].value)
                 }
+            }
+
+            function setCookie(name, value) {
+                document.cookie = name + "=" + value + ";path=/";
+            }
+
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++) {
+                    var c = ca[i];
+                    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
             }
         </script>
     </body>
