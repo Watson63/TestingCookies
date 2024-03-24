@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-    <script>
-        window.onload = function() {
-        
-                // Check if the user is logged in
-            if (!document.cookie.split(';').some((item) => item.trim().startsWith('loggedin='))) {
-                // If the user is not logged in, redirect them to the specified URL
-                window.location.href = "https://watson63.github.io/TestingCookies/";
-            }
-        };
-    </script>
+
     <style>
         :root {
             --background-color-light: #ffffff;
@@ -94,6 +85,16 @@ input:checked + .slider:before {
     </style>
 </head>
 <body>
+        <script>
+        window.onload = function() {
+        
+                // Check if the user is logged in
+            if (!document.cookie.split(';').some((item) => item.trim().startsWith('loggedin='))) {
+                // If the user is not logged in, redirect them to the specified URL
+                window.location.href = "https://watson63.github.io/TestingCookies/";
+            }
+        };
+    </script>
     <!-- Rounded switch -->
     <h1>Switch between light and dark mode: <hr></h1>
 <label class="switch">
