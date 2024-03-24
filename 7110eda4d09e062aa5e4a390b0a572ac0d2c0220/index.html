@@ -97,7 +97,7 @@ input:checked + .slider:before {
     <br>
     <br>
   <!-- Logout button -->
-  <button id="logout" href="https://watson63.github.io/TestingCookies/">Logout</button>
+  <button id="logout">Logout</button>
     <script>
         var toggle = document.getElementById('theme-toggle');
         toggle.addEventListener('change', function() {
@@ -124,6 +124,9 @@ input:checked + .slider:before {
         document.getElementById('logout').addEventListener('click', function() {
             // Delete the 'loggedin' cookie
             document.cookie = 'loggedin=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                // After logout, redirect to the specified URL
+    window.location.href = "https://watson63.github.io/TestingCookies/";
+});
         });
     </script>
 </body>
