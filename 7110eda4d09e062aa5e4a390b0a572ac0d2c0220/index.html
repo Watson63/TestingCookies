@@ -129,19 +129,6 @@ input:checked + .slider:before {
 
         });
     </script>
-        <p id="visitorCount"></p>
-    <script>
-        // Check if the 'uniqueVisitor' cookie exists
-        if (!document.cookie.split(';').some((item) => item.trim().startsWith('uniqueVisitor='))) {
-            // If not, create the cookie and set its value to 1
-            document.cookie = 'uniqueVisitor=1; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
-            document.getElementById('visitorCount').textContent = "You are visitor number 1!";
-        } else {
-            // If the cookie exists, increment its value
-            var visitorCount = parseInt(document.cookie.replace(/(?:(?:^|.*;\s*)uniqueVisitor\s*\=\s*([^;]*).*$)|^.*$/, "$1")) + 1;
-            document.cookie = 'uniqueVisitor=' + visitorCount + '; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
-            document.getElementById('visitorCount').textContent = "You are visitor number " + visitorCount + "!";
-        }
-    </script>
+
 </body>
 </html>
